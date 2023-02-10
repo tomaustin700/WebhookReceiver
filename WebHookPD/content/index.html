@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/runmode/colorize.min.js" integrity="sha512-KyiBT1ypnd1OYmXt5tfljpsucuh9iscvA9soQDkKAdbwZfAk+RfPyxNd9E6tiuJmF9ZhPiDDXzdRkp5ccp525w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js" integrity="sha512-I6CdJdruzGtvDyvdO4YsiAq+pkWf2efgd1ZUSK2FnM/u2VuRASPC7GowWQrWyjxCZn6CT89s3ddGI+be0Ak9Fg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+                .navbar-xs {
+                    min-height: 36px;
+                    height: 36px;
+                }
+
+                    .navbar-xs .navbar-brand {
+                        padding: 0px 12px;
+                        font-size: 16px;
+                        line-height: 28px;
+                    }
+
+                    .navbar-xs .navbar-nav > li > a {
+                        padding-top: 0px;
+                        padding-bottom: 0px;
+                        line-height: 28px;
+                    }
+
+                .bg-top {
+                    background-color: #fafbfc !important;
+                }
+
+                .centre-align {
+                    text-align: center;
+                }
+
+                a.navbar-brand {
+                    white-space: normal;
+                    text-align: center;
+                    word-break: break-all;
+                }
+
+                /* Provide sufficient contrast against white background */
+                a {
+                    color: #0366d6;
+                }
+
+                .btn-primary {
+                    color: #fff;
+                    background-color: #1b6ec2;
+                    border-color: #1861ac;
+                }
+
+                .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+                    color: #fff;
+                    background-color: #1b6ec2;
+                    border-color: #1861ac;
+                }
+
+                /* Sticky footer styles
+        -------------------------------------------------- */
+                html {
+                    font-size: 14px;
+                }
+
+                @media (min-width: 768px) {
+                    html {
+                        font-size: 16px;
+                    }
+                }
+
+                .border-top {
+                    border-top: 1px solid #e5e5e5;
+                }
+
+                .border-bottom {
+                    border-bottom: 1px solid #e5e5e5;
+                }
+
+                .box-shadow {
+                    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+                }
+
+                button.accept-policy {
+                    font-size: 1rem;
+                    line-height: inherit;
+                }
+
+                /* Sticky footer styles
+        -------------------------------------------------- */
+                html {
+                    position: relative;
+                    min-height: 100%;
+                }
+
+                body {
+                    /* Margin bottom by footer height */
+                    margin-bottom: 60px;
+                }
+
+                .footer {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    white-space: nowrap;
+                    line-height: 60px; /* Vertically center the text there */
+                }
+
+                div.maininputs {
+                    width: 1000px;
+                    margin: auto;
+                    /*border: 3px solid #73AD21;*/
+                }
+
+                .input {
+                    width: 1000px
+                }
+
+                .left-align {
+                    text-align: left;
+                }
+
+                .input-div {
+                    padding-bottom: 7px;
+                }
+
+                .header {
+                    padding-bottom: 7px;
+                    padding-top: 10px;
+                }
+
+                .button-div {
+                    padding-bottom: 18px;
+                }
+
+                .validation-summary-errors ul {
+                    list-style: none;
+                    padding-left: 0px;
+                }
+
+                .CodeMirror {
+                    text-align: left !important;
+                    border: 1px solid #bbbbbb;
+                    height: 500px !important;
+                }
+    </style>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3 background">
+            <div class="text-center maininputs">
+                <fieldset>
+                    <div class="header">
+                        <h1 class="left-align">WebHook Reciever</h1>
+                        <h6 class="left-align" id="guid"></h6>
+
+                    </div>
+                    <div class="input-div">
+                        <h5 class="left-align" for="yaml">Recieved Body</h5>
+                        <div>
+                            <textarea class="json" type="text" id="content"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="button-div" style="float: right;">
+                        <button type="button" class="btn btn-light" id="shareButton">Copy to Clipboard</button>
+                    </div>
+
+                </fieldset>
+
+                <div class="left-align">
+                    <h5>About</h5>
+                    <p>
+                        Lorem Ipsum
+                    </p>
+                </div>
+
+            </div>
+
+
+
+        </main>
+    </div>
+
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container centre-align">
+            <a href="https://github.com/tomaustin700/YAMLPipelineValidator">GitHub</a> - <a href="https://github.com/tomaustin700/YAMLPipelineValidator/issues/new">
+                Report
+                Issue
+            </a> - <a href="https://www.buymeacoffee.com/tomaustin">Buy Me a Coffee</a> - Built by <a href="https://www.twitter.com/tomaustin700">Tom Austin</a>
+        </div>
+    </footer>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            document.getElementById("content").value = ""
+            var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
+                mode: { name: "javascript", json: true },
+                lineNumbers: true,
+                readOnly: "nocursor"
+
+            });
+
+            function uuidv4() {
+                return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                );
+            }
+
+            const gu = uuidv4();
+            document.getElementById("guid").innerHTML = "http://localhost:7146/api/Webhooks/WebHookRecieve/" + gu;
+
+
+            const apiBaseUrl = window.location.origin;
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl(apiBaseUrl + '/api')
+                .build();
+
+            connection.on(gu, (message) => {
+                document.getElementById("content").value = message;
+                editor.setValue(message)
+            });
+
+            connection.start()
+                .catch(console.error);
+
+        });
+
+
+
+    </script>
+
+
+</body>
+</html>
