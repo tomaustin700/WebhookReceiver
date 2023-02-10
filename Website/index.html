@@ -179,6 +179,7 @@
                 <fieldset>
                     <div class="header">
                         <h1 class="left-align">WebHook Reciever</h1>
+                        <h6 class="left-align">Your unique url:</h6>
                         <h6 class="left-align" id="guid"></h6>
 
                     </div>
@@ -190,7 +191,7 @@
                     </div>
 
                     <div class="button-div" style="float: right;">
-                        <button type="button" class="btn btn-light" id="shareButton">Copy to Clipboard</button>
+                        <button type="button" class="btn btn-light" id="copyButton">Copy to Clipboard</button>
                     </div>
 
                 </fieldset>
@@ -198,7 +199,7 @@
                 <div class="left-align">
                     <h5>About</h5>
                     <p>
-                        Lorem Ipsum
+                        Webhook receiver is a simple tool to help you test your webhooks. It will display the body of the request. Simply provide the unique url generated above to the service you are testing and the recieved json body value will be shown.
                     </p>
                 </div>
 
@@ -258,6 +259,17 @@
 
             connection.start()
                 .catch(console.error);
+
+            $('#copyButton').click(function () {
+                var copyText = document.getElementById("content");
+
+                // Select the text field
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text inside the text field
+                navigator.clipboard.writeText(copyText.value);
+            });
 
         });
 
