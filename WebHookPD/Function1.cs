@@ -16,18 +16,7 @@ namespace WebHookPD
     public static class Function
     {
 
-
-        [FunctionName("index")]
-        public static IActionResult GetHomePage([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req, ExecutionContext context)
-        {
-            var path = Path.Combine(context.FunctionAppDirectory, "content", "index.html");
-            return new ContentResult
-            {
-                Content = File.ReadAllText(path),
-                ContentType = "text/html",
-            };
-        }
-
+        
         [FunctionName("negotiate")]
         public static SignalRConnectionInfo Negotiate(
             [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req,
